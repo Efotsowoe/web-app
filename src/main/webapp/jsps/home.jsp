@@ -9,9 +9,9 @@
 </head>
 </head>
 <body>
-<h1 align="center">Welcome to Acada Learning, Calgary, Canada Office.</h1>
+<h1 align="center">Welcome to Acada Learning, Calgary NW, Canada Office.</h1>
 <h1 align="center">We are developing and supporting quality Software Solutions to millions of clients.
-	We offer Training for DevOps with Linux and Cloud equipping IT Engineers for best performance. God Loves you.</h1>
+	We offer Training for DevOps with Linux and Cloud equipping IT Engineers for best performance. God Loves you. Do your best to glority his name.</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
