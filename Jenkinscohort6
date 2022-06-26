@@ -41,7 +41,7 @@ stage('4.backupArchitfacts'){
 }
  stage('7.Deploytostaging'){
      steps{
-         deploy adapters: [tomcat9(credentialsId: 'tomcat_Cred', path: '', url: 'http://172.31.30.178:7000/')], contextPath: null, war: 'target/*.war'
+         deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://34.229.133.50:7000/')], contextPath: null, war: 'target/*.war'
      }
  }
  stage('8.Emailnotification'){
