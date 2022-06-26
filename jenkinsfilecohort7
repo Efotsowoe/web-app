@@ -1,0 +1,50 @@
+pipeline{
+	agent any
+	tools{
+	maven "maven3.8.4"
+	}
+	stages{
+	stage("1.CodeClone"){
+		steps{
+	git credentialsId: 'Github-Cred', url: 'https://github.com/Efotsowoe/web-app.git'
+		}
+	}
+  	stage("2.Build"){
+  	steps{
+  		sh "mvn clean package"
+  		}
+  	}
+  	stage("3.CodeQuality"){
+  	steps{
+  	sh "mvn sonar:sonar"
+  		}
+  	}
+  	stage("4.Artifacts"){
+  	steps{
+  	sh "mvn deploy"
+  		}
+  	}
+  	stage("5.DeploytoUAT"){
+  	steps{
+  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://34.229.133.50:7000/')], contextPath: null, war: 'target/*.war'
+  		}
+  	}
+  	stage("6.Approval"){
+  	steps{
+  	timeout(time:5, unit:'DAYS'){
+	input message: 'Approval for Production'
+			}
+		}
+	}
+  	stage("7.DeploytoPROD"){
+  	steps{
+  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://34.229.133.50:7000/')], contextPath: null, war: 'target/*.war'
+		}
+  	}
+  	stage("8.EmailNotification"){
+  	steps{
+  	emailext body: 'This is a notification of Build Success', recipientProviders: [buildUser()], subject: 'Build Success', to: 'jnghana@gmail.com'
+  			}
+  		}
+  	}
+}
