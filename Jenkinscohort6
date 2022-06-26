@@ -28,7 +28,7 @@ stage('4.backupArchitfacts'){
   }
  stage('5.Deploytostaging'){
      steps{
-   deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://34.229.133.50:7000/')], contextPath: null, war: 'target/*.war'
+   deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://52.90.154.215:7000/')], contextPath: null, war: 'target/*.war'
      }
  }
  stage('6.Approval'){
@@ -41,7 +41,7 @@ stage('4.backupArchitfacts'){
 }
  stage('7.Deploytostaging'){
      steps{
-         deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://34.229.133.50:7000/')], contextPath: null, war: 'target/*.war'
+         deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://52.90.154.215:7000/')], contextPath: null, war: 'target/*.war'
      }
  }
  stage('8.Emailnotification'){
