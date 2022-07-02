@@ -26,7 +26,7 @@ pipeline{
   	}
   	stage("5.DeploytoUAT"){
   	steps{
-  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://100.24.8.83:7000/')], contextPath: null, war: 'target/*.war'
+  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://18.234.85.137:7000/')], contextPath: null, war: 'target/*.war'
   		}
   	}
   	stage("6.Approval"){
@@ -38,7 +38,7 @@ pipeline{
 	}
   	stage("7.DeploytoPROD"){
   	steps{
-  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://100.24.8.83:7000/')], contextPath: null, war: 'target/*.war'
+  	deploy adapters: [tomcat9(credentialsId: 'uba-tomcat-cred', path: '', url: 'http://18.234.85.137:7000/')], contextPath: null, war: 'target/*.war'
 		}
   	}
   	stage("8.EmailNotification"){
